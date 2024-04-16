@@ -38,6 +38,8 @@ return require('packer').startup(function(use)
         end
     }
 
+    use ('folke/neodev.nvim')
+
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
@@ -52,5 +54,9 @@ return require('packer').startup(function(use)
         }
     }
 
-    use ('folke/neodev.nvim')
+    use('nvim-lua/lsp_extensions.nvim') -- for LSP code actions
+
+
+    use ('github/copilot.vim')
+
 end)
