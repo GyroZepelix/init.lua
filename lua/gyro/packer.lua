@@ -54,8 +54,11 @@ return require('packer').startup(function(use)
         }
     }
 
-    use('nvim-lua/lsp_extensions.nvim') -- for LSP code actions
+    use ('hrsh7th/cmp-buffer')
+    use ('hrsh7th/cmp-path')
+    use ('hrsh7th/cmp-cmdline')
 
+    use('nvim-lua/lsp_extensions.nvim') -- for LSP code actions
 
     use ('github/copilot.vim')
 
