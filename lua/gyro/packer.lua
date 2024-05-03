@@ -87,4 +87,28 @@ return require('packer').startup(function(use)
         end
     })
 
+    use({
+        "epwalsh/obsidian.nvim",
+        tag = "*",  -- recommended, use latest release instead of latest commit
+        requires = {
+            -- Required.
+            "nvim-lua/plenary.nvim",
+
+            -- see below for full list of optional dependencies 👇
+        },
+        config = function()
+            require("obsidian").setup({
+                workspaces = {
+                    {
+                        name = "archives-of-praxis",
+                        path = "~/Documents/Obsidian/Archives of Praxis",
+                    },
+                },
+
+                -- see below for full list of options 👇
+            })
+        end,
+    })
+
+
 end)
