@@ -21,6 +21,7 @@ cmp.setup({
         -- ['<CR>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
         ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<C-Space>'] = cmp.mapping.complete(),
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
