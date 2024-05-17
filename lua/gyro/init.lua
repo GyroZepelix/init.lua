@@ -1,3 +1,3 @@
 require("gyro.remap")
-require("gyro.packer")
+require("gyro.lazy")
 require("gyro.set")
