@@ -110,6 +110,10 @@ return require('packer').startup(function(use)
         end,
     })
 
-    use('mrcjkb/rustaceanvim')
+    use({
+        'mrcjkb/rustaceanvim',
+        branch = '4.23.2',
+    })
+
     use('mfussenegger/nvim-dap')
 end)
