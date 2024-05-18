@@ -33,6 +33,7 @@ local function setup_lsp()
     })
 
     default_setup("lua_ls")
+    default_setup("rust_analyzer")
 end
 
 return {
