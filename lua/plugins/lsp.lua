@@ -21,7 +21,14 @@ local function setup_lsp()
         callback = function(event)
             local opts = { buffer = event.buf }
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+            -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+            -- vim.keymap.set('n', 'gd', '<cmd>lua require("telescope.builtin").lsp_definitions({initial_mode = "normal})<insert>')
+            vim.keymap.set('n', 'gd', function()
+                local telescope = require("telescope.builtin")
+                telescope.lsp_definitions({
+                    initial_mode = "insert",
+                })
+            end, opts)
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
             vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts)
