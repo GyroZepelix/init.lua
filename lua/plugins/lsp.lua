@@ -66,7 +66,6 @@ return {
         },
         config = setup_lsp
     },
-    -- Rustaceanvim doesnt work the best for me
     {
         "mrcjkb/rustaceanvim",
         version = "^4",
@@ -93,6 +92,9 @@ return {
                     --     }
                     -- }
                 },
+                dap = {
+
+                }
             }
         end
     },
@@ -108,7 +110,7 @@ return {
     --
     --         rt.setup({
     --             dap = {
-    --                 adapter, require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
+    --                 adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
     --             },
     --             server = {
     --                 capabilities = require("cmp_nvim_lsp").default_capabilities(),
@@ -120,7 +122,10 @@ return {
     --             tools = {
     --                 hover_actions = {
     --                     auto_focus = true,
-    --                 }
+    --                 },
+    --                 float_win_config = {
+    --                     border = "rounded",
+    --                 },
     --             }
     --         })
     --     end
