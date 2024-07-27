@@ -1,5 +1,6 @@
 {
     "diagnostics.globals": [
-        "im"
+        "im",
+        "RegisterJavaAutocommand"
     ]
 }
