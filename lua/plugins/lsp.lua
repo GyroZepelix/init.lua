@@ -6,11 +6,14 @@ local function setup_lsp()
 
     local lspconfig = require('lspconfig')
 
-    local default_setup = function(server)
-        lspconfig[server].setup({
+    local default_setup = function(server, config)
+        -- If config is provided, merge it with default handlers and capabilities
+        config = config or {}
+
+        lspconfig[server].setup(vim.tbl_deep_extend("force", {
             handlers = handlers,
             capabilities = capabilities,
-        })
+        }, config))
     end
 
     vim.keymap.set('n', 'gl', vim.diagnostic.open_float)
@@ -40,7 +43,38 @@ local function setup_lsp()
     })
 
     default_setup("lua_ls")
+    default_setup("ts_ls", {
+        init_options = {
+            prefrences = {
+                -- disableSuggestions = true,
+            }
+        }
+    })
+    default_setup("tailwindcss")
+    default_setup("eslint")
+    default_setup("dockerls")
+    default_setup("docker_compose_language_service")
+    default_setup("gopls", {
+        settings = {
+            gopls = {
+                completeUnimported = true,
+                usePlaceholders = true,
+                analyses = {
+                    unusedparams = true
+                }
+            }
+        }
+    })
 
+    local MY_FQBN = "arduino:avr:nano"
+    default_setup("arduino_language_server", {
+        cmd = {
+            "arduino-language-server",
+            "-cli-config", "/home/dgjalic/.arduino15/arduino-cli.yaml",
+            "-fqbn",
+            MY_FQBN
+        }
+    })
 end
 
 return {
@@ -68,7 +102,7 @@ return {
     },
     {
         "mrcjkb/rustaceanvim",
-        version = "^4",
+        version = "^5",
         lazy = false,
         config = function()
             vim.g.rustaceanvim = {
