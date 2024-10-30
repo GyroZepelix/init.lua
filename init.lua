@@ -1,2 +1,1 @@
-require("gyro")
-
+require("config.init")
