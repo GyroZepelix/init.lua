@@ -15,12 +15,22 @@ return {
     {
         'hrsh7th/nvim-cmp',
         event = 'InsertEnter',
+        dependencies = {
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-cmdline",
+            "tpope/vim-dadbod",
+            "kristijanhusak/vim-dadbod-completion",
+            "kristijanhusak/vim-dadbod-ui",
+        },
         config = function()
             local cmp = require('cmp')
 
             cmp.setup({
                 sources = {
                     { name = 'nvim_lsp' },
+                    { name = 'vim-dadbod-completion' },
                 },
                 window = {
                     completion = cmp.config.window.bordered(),
@@ -55,6 +65,7 @@ return {
                 }, {
                     { name = 'cmdline' }
                 }),
+                matching = { disallow_symbol_nonprefix_matching = false }
             })
         end,
         keys = {
