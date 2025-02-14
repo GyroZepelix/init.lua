@@ -43,7 +43,7 @@ return {
                 ui.close()
             end
 
-
+            -------- Go Debugger ---------
             dap.adapters.dlv_spawn = function(cb)
                 local stdout = vim.loop.new_pipe(false)
                 local handle
@@ -86,6 +86,20 @@ return {
                     program = "${file}",
                 },
             }
+            vim.api.nvim_create_user_command(
+                'DelveTest',
+                function()
+                    require('dap-go').debug_test()
+                end,
+                { desc = "Debug the closest method above the cursor" }
+            )
+            vim.api.nvim_create_user_command(
+                'DelveLast',
+                function()
+                    require('dap-go').debug_last_test()
+                end,
+                { desc = "Rerun last run test with DelveTest" }
+            )
         end
     }
 }
