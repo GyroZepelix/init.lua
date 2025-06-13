@@ -21,7 +21,7 @@ return {
 
             vim.keymap.set("n", "<leader>gk", function()
                 require("dapui").eval(nil, { enter = true })
-            end)
+            end, { desc = "Dap Analyze" })
 
             vim.keymap.set("n", "<F5>", dap.continue)
             vim.keymap.set("n", "<F6>", dap.step_into)
@@ -78,6 +78,15 @@ return {
                     end,
                     100)
             end
+
+            dap.adapters.dlv_attach = function(callback, config)
+                callback({
+                    type = "server",
+                    host = config.host or "127.0.0.1",
+                    port = config.port or 38697
+                })
+            end
+
             dap.configurations.go = {
                 {
                     type = 'dlv_spawn',
@@ -99,6 +108,21 @@ return {
                     require('dap-go').debug_last_test()
                 end,
                 { desc = "Rerun last run test with DelveTest" }
+            )
+            vim.api.nvim_create_user_command(
+                'DelveAttach',
+                function()
+                    require('dap').run({
+                        type = 'dlv_attach',
+                        name = 'Attach to external dlv',
+                        request = 'attach',
+                        mode = 'remote',
+                        host = '127.0.0.1',
+                        port = 38697,
+                        program = vim.fn.getcwd(), -- or use "${workspaceFolder}" if you prefer
+                    })
+                end,
+                { desc = "Attach to a manually launched Delve server" }
             )
         end
     }
