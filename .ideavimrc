@@ -30,7 +30,6 @@ set smartindent
 set wrap
 set scrolloff=8
 set sidescrolloff=8
-set clipboard=unnamed,unnamedplus
 set visualbell
 set noerrorbells
 
