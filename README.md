@@ -1,5 +1,8 @@
 # Neovim Configuration
 
+> [!WARNING]
+> The readme is deprecated since the 0.10.0-v2 version. 0.11.0 brought many changes so most of the information down under is now deprecated. Proceed with caution!
+
 A modern Neovim configuration built with `lazy.nvim` for efficient plugin management. This configuration focuses on developer productivity with comprehensive LSP support, debugging capabilities, and a clean interface.
 
 ## Features
@@ -70,9 +73,11 @@ nvim
 ## Plugins
 
 ### Core & Plugin Management
+
 - **lazy.nvim** - Modern plugin manager with lazy loading
 
 ### LSP & Development
+
 - **lsp-zero.nvim** - LSP configuration framework
 - **nvim-lspconfig** - LSP client configurations
 - **mason.nvim** - LSP server installer
@@ -81,36 +86,43 @@ nvim
 - **nvim-treesitter** - Syntax highlighting
 
 ### Debugging
+
 - **nvim-dap** - Debug Adapter Protocol client
 - **nvim-dap-ui** - Debug UI
 - **nvim-dap-go** - Go debugging support
 - **nvim-dap-virtual-text** - Virtual text debug info
 
 ### File Management & Navigation
+
 - **neo-tree.nvim** - Modern file explorer
 - **telescope.nvim** - Fuzzy finder
 - **vim-tmux-navigator** - Seamless tmux navigation
 
 ### Git Integration
+
 - **vim-fugitive** - Git wrapper
 - **gitsigns.nvim** - Git decorations
 
 ### UI & Theme
+
 - **dracula.nvim** - Dark theme
 - **lualine.nvim** - Statusline
 - **which-key.nvim** - Keybinding helper
 
 ### Editing Enhancements
+
 - **nvim-autopairs** - Auto-close brackets
 - **nvim-surround** - Surround text objects
 - **undotree** - Undo history visualizer
 
 ### Database
+
 - **vim-dadbod** - Database interface
 - **vim-dadbod-ui** - Database UI
 - **vim-dadbod-completion** - SQL completion
 
 ### Utilities
+
 - **vim-suda** - Sudo file editing
 - **lazydev.nvim** - Neovim development setup
 - **neoconf.nvim** - Configuration management
@@ -118,6 +130,7 @@ nvim
 ## Key Mappings
 
 ### Leader Keys
+
 - **Leader**: `<Space>`
 - **Local Leader**: `\`
 
@@ -129,6 +142,7 @@ nvim
 | `<leader>?` | Normal | WhichKey | Show buffer keymaps |
 
 ### Navigation & Movement
+
 | Key | Mode | Action | Description |
 |-----|------|--------|-------------|
 | `<C-d>` | Normal | `<C-d>zz` | Scroll down and center |
@@ -137,6 +151,7 @@ nvim
 | `N` | Normal | `Nzzzv` | Previous search result (centered) |
 
 ### Clipboard Operations
+
 | Key | Mode | Action | Description |
 |-----|------|--------|-------------|
 | `<leader>y` | Normal/Visual | `"+y` | Yank to system clipboard |
@@ -145,6 +160,7 @@ nvim
 | `<leader>d` | Normal/Visual | `"_d` | Delete without yanking |
 
 ### Telescope (Fuzzy Finder)
+
 | Key | Mode | Action | Description |
 |-----|------|--------|-------------|
 | `<leader>pf` | Normal | Find Files | Search project files |
@@ -153,6 +169,7 @@ nvim
 | `<leader>pb` | Normal | Buffers | List open buffers |
 
 ### LSP Features
+
 | Key | Mode | Action | Description |
 |-----|------|--------|-------------|
 | `K` | Normal | Hover | Show documentation |
@@ -167,6 +184,7 @@ nvim
 | `<leader>a` | Normal | Code Actions | Show code actions |
 
 ### Debugging (DAP)
+
 | Key | Mode | Action | Description |
 |-----|------|--------|-------------|
 | `<leader>b` | Normal | Toggle Breakpoint | Set/remove breakpoint |
@@ -180,6 +198,7 @@ nvim
 | `<F10>` | Normal | Restart | Restart debugging |
 
 ### Git Integration
+
 | Key | Mode | Action | Description |
 |-----|------|--------|-------------|
 | `<leader>gs` | Normal | Git Status | Open Fugitive |
@@ -192,12 +211,14 @@ nvim
 | `<leader>hd` | Normal | Diff This | Show diff |
 
 ### File Explorer (Neo-tree)
+
 | Key | Mode | Action | Description |
 |-----|------|--------|-------------|
 | `<leader>pe` | Normal | Reveal | Open file explorer |
 | `Z` | Normal | Expand All | Expand all subnodes |
 
 ### Utilities
+
 | Key | Mode | Action | Description |
 |-----|------|--------|-------------|
 | `<leader>u` | Normal | Undotree | Open undo history |
@@ -216,6 +237,7 @@ The configuration automatically installs and configures these language servers:
 ### Adding New Language Servers
 
 1. Update the `ensure_installed` list in `lua/plugins/lsp.lua`:
+
 ```lua
 ensure_installed = { "lua_ls", "rust_analyzer", "gopls", "systemd_ls", "your_new_server" },
 ```
@@ -229,6 +251,7 @@ ensure_installed = { "lua_ls", "rust_analyzer", "gopls", "systemd_ls", "your_new
 The configuration includes full Go debugging support with `delve`:
 
 1. **Install delve**:
+
 ```bash
 go install github.com/go-delve/delve/cmd/dlv@latest
 ```
@@ -256,6 +279,7 @@ Access databases directly from Neovim with vim-dadbod:
 ### Changing Theme
 
 Edit `lua/plugins/theme.lua`:
+
 ```lua
 return {
     {
@@ -270,6 +294,7 @@ return {
 ### Adding Custom Keybindings
 
 Add to `lua/config/remap.lua`:
+
 ```lua
 vim.keymap.set("n", "<your-key>", "<your-command>", { desc = "Description" })
 ```
@@ -277,6 +302,7 @@ vim.keymap.set("n", "<your-key>", "<your-command>", { desc = "Description" })
 ### Modifying Settings
 
 Edit `lua/config/set.lua` for Vim options:
+
 ```lua
 vim.opt.your_option = value
 ```
@@ -284,6 +310,7 @@ vim.opt.your_option = value
 ## Troubleshooting
 
 ### Plugin Issues
+
 ```bash
 # Remove lazy-lock.json and reinstall
 rm ~/.config/nvim/lazy-lock.json
@@ -291,6 +318,7 @@ nvim --headless +q  # This will reinstall plugins
 ```
 
 ### LSP Issues
+
 ```bash
 # Check LSP status
 :LspInfo
@@ -300,6 +328,7 @@ nvim --headless +q  # This will reinstall plugins
 ```
 
 ### Debugging Issues
+
 ```bash
 # Check DAP configuration
 :lua require('dap').configurations
