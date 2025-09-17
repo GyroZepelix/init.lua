@@ -9,10 +9,11 @@ return {
       "TmuxNavigateRight",
     },
     keys = {
-      { "<a-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<a-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      -- bound to <caps>+hjkl in my kanata dotfiles
+      { "<Left>", "<cmd>TmuxNavigateLeft<cr>" },
+      { "<Down>", "<cmd>TmuxNavigateDown<cr>" },
+      { "<Up>", "<cmd>TmuxNavigateUp<cr>" },
+      { "<Right>", "<cmd>TmuxNavigateRight<cr>" },
     },
   },
 }
