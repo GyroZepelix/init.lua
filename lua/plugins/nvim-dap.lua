@@ -1,5 +1,3 @@
-local toggled_scopes = false
-
 return {
   {
     "rcarriga/nvim-dap-ui",
@@ -13,6 +11,8 @@ return {
       if LazyVim.has("mason-nvim-dap.nvim") then
         require("mason-nvim-dap").setup(LazyVim.opts("mason-nvim-dap.nvim"))
       end
+
+      local dap = require("dap")
 
       vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
@@ -43,6 +43,30 @@ return {
       vim.keymap.set("n", "K", widgets.hover, {
         buffer = scopes.buf
       })
+
+      -- configure NextJs debugger on port 9230
+
+      local js_filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" }
+
+      for _, language in ipairs(js_filetypes) do
+        if dap.configurations[language] then
+          local new_config = {
+            type = "pwa-node",
+            request = "attach",
+            name = "Attach (Node 9230 port)",
+            port = 9230,
+            cwd = "${workspaceFolder}",
+            sourceMaps = true,
+            skipFiles = { "<node_internals>/**", "node_modules/**" },
+            resolveSourceMapLocations = {
+              "${workspaceFolder}/**",
+              "!**/node_modules/**",
+            },
+          }
+
+          table.insert(dap.configurations[language], new_config)
+        end
+      end
     end,
   },
 }
