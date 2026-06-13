@@ -4,6 +4,7 @@
 
 vim.g.snacks_animate = false
 vim.opt.clipboard = ""
+vim.o.exrc = true
 vim.o.winborder = "rounded"
 vim.lsp.inlay_hint.enable(false)
 
